@@ -31,7 +31,7 @@ letter-spacing: 0.1em;
     border-radius: 40px;
 }
 
-@mixin header ( $f-s, $f-c) {
+@mixin header ($f-s, $f-c) {
     position: absolute;
     width: 1495px;
     height: 166px;
@@ -45,6 +45,25 @@ letter-spacing: 0.1em;
     color: $f-c;
 }
 
+@mixin navButton () {
+    position: absolute;
+    width: 47px;
+    height: 30px;
+    left: 290px;
+    top: 395px;
+
+    font-family: 'indy pimp';
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 110px;
+    line-height: 127px;
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #FFDB5E;
+
+}
+
 button {
     @include button(291px, 86.06px, #FFDB5E, 30px, #000000);
 }
@@ -53,15 +72,15 @@ button {
     @include card();
 }
 
-.front {
-    @include header(110px, #FFDB5E);
-    z-index: 1;
+.down {
+    @include navButton();
+    transform: matrix(1, 0, 0, -1, 0, 0);
 }
 
-.back {
-    @include header(110px, #000000);
-    z-index: 0;
-    width: 1510px;
-    height: 1710px;
+.up {
+    @include navButton();
 }
 
+h1 {
+    @include header(110px, #FFDB5E)
+}
