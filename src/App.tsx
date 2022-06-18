@@ -1,5 +1,7 @@
 import './App.scss';
 import ActionButton from './Atoms/ActionButton';
+import Card from './Atoms/Card';
+import Header from './Atoms/Header';
 import ApiService from './Services/ApiService';
 
 function App() {
@@ -9,7 +11,9 @@ birds.then(results => {return results.data}).then(result => {result.map((entity 
 
   return (
     <>
+      <Header/>
       <ActionButton action={'Five'}/>
+      <Card/>
     </>
   );
 }

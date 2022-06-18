@@ -1,3 +1,72 @@
 html {
     background-color: aqua;
+    box-sizing: border-box;
+}
+
+@mixin button ($width, $height, $bg-color, $br, $b-color){
+position: absolute;
+width: $width;
+height: $height;
+left: 167px;
+top: 770px;
+background: $bg-color;
+border: 5px solid $b-color;
+border-radius: $br;
+font-family: 'indy pimp';
+font-weight: 700;
+font-size: 55px;
+text-align: center;
+letter-spacing: 0.1em;
+}
+
+@mixin card {
+    position: absolute;
+    width: 397px;
+    height: 530px;
+    left: 1207px;
+    top: 482px;
+
+    background: #FFDB5E;
+    border: 9px solid #FEFEFF;
+    border-radius: 40px;
+}
+
+button {
+    @include button(291px, 86.06px, #FFDB5E, 30px, #000000)
+}
+
+.card {
+    @include card()
+}
+
+h1 {
+
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: black;
+    /* Header */
+
+    position: absolute;
+    width: 1495px;
+    height: 166px;
+    left: 119px;
+    top: 104px;
+
+
+    /* Bird Up */
+
+    position: absolute;
+    width: 400px;
+    height: 118px;
+    left: 680px;
+    top: 129px;
+
+    font-family: 'indy pimp';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 110px;
+    line-height: 127px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFDB5E;
+
 }
