@@ -11,7 +11,8 @@ birds.then(results => {return results.data}).then(result => {result.map((entity 
 
   return (
     <>
-      <Header/>
+      <Header classNameValue={'front'}/>
+      <Header classNameValue={'back'}/>
       <ActionButton action={'Five'}/>
       <Card/>
     </>
