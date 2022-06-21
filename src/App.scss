@@ -1,44 +1,41 @@
-html {
-    background-color: aqua;
+:root {
+    --primaryColor: #FFDB5E;
+}
+
+* {
     box-sizing: border-box;
+    font-family: 'indy pimp';
+    font-weight: 700;
+}
+
+html {
+    background-color: #4AD0E280;
+    
 }
 
 @mixin button ($width, $height, $bg-color, $br, $b-color){
-position: absolute;
-width: $width;
-height: $height;
-left: 167px;
-top: 770px;
-background: $bg-color;
-border: 5px solid $b-color;
-border-radius: $br;
-font-family: 'indy pimp';
-font-weight: 700;
-font-size: 55px;
-text-align: center;
-letter-spacing: 0.1em;
+    width: $width;
+    height: $height;
+    background: $bg-color;
+    border: 5px solid $b-color;
+    border-radius: $br;
+    font-size: 55px;
+    text-align: center;
+    letter-spacing: 0.1em;
 }
 
 @mixin card {
-    position: absolute;
     width: 397px;
     height: 530px;
-    left: 1207px;
-    top: 482px;
-
-    background: #FFDB5E;
+    background: var(--primaryColor);
     border: 9px solid #FEFEFF;
     border-radius: 40px;
 }
 
 @mixin header ($f-s, $f-c) {
-    position: absolute;
     width: 1495px;
     height: 166px;
-    left: 119px;
-    top: 104px;
 
-    font-family: 'indy pimp';
     font-size: $f-s;
     text-align: center;
     letter-spacing: 0.1em;
@@ -46,26 +43,31 @@ letter-spacing: 0.1em;
 }
 
 @mixin navButton () {
-    position: absolute;
     width: 47px;
     height: 30px;
-    left: 290px;
-    top: 395px;
-
-    font-family: 'indy pimp';
     text-decoration: none;
-    font-weight: 700;
     font-size: 110px;
     line-height: 127px;
     text-align: center;
     letter-spacing: 0.1em;
-
-    color: #FFDB5E;
+    color: var(--primaryColor);
 
 }
 
+.cloud, .right{
+    width: 534px;
+    height: 165px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.entityImage {
+    width: 349px;
+    height: 219px;
+    background: #FEFEFF;
+}
+
 button {
-    @include button(291px, 86.06px, #FFDB5E, 30px, #000000);
+    @include button(291px, 86.06px, var(--primaryColor), 30px, #000000);
 }
 
 .card {
@@ -73,8 +75,9 @@ button {
 }
 
 .down {
+    position: absolute;
+    transform: matrix(-1, 1);
     @include navButton();
-    transform: matrix(1, 0, 0, -1, 0, 0);
 }
 
 .up {
@@ -82,5 +85,25 @@ button {
 }
 
 h1 {
-    @include header(110px, #FFDB5E)
+    @include header(110px, var(--primaryColor))
+}
+
+h3 {
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #000000;
+}
+
+.cardStats {
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #000000;
+}
+
+.entityCard {
+    display: flex;
 }
