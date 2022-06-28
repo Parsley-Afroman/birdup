@@ -1,5 +1,7 @@
 :root {
     --primaryColor: #FFDB5E;
+    --secondaryColor: #7948AC;
+    --backgroundColor: #4AD0E280;
 }
 
 * {
@@ -9,7 +11,7 @@
 }
 
 html {
-    background-color: #4AD0E280;
+    background-color: var(--backgroundColor);
     
 }
 
@@ -35,9 +37,17 @@ html {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    transition: all .2s ease-in-out;
 
     h3 {
         margin: 15px 0 5px 0;
+
+    }
+
+    &:hover {
+        border-color: var(--secondaryColor);
+        transform: scale(1.1);
+        box-shadow: (11px 12px 21px #7948AC28);
     }
    
 }
