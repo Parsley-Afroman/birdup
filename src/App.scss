@@ -30,12 +30,22 @@ html {
     background: var(--primaryColor);
     border: 9px solid #FEFEFF;
     border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    h3 {
+        margin: 15px 0 5px 0;
+    }
+   
 }
 
 @mixin header ($f-s, $f-c) {
     width: 1495px;
     height: 166px;
-
+    
     font-size: $f-s;
     text-align: center;
     letter-spacing: 0.1em;
@@ -102,8 +112,4 @@ h3 {
     text-align: center;
     letter-spacing: 0.1em;
     color: #000000;
-}
-
-.entityCard {
-    display: flex;
 }

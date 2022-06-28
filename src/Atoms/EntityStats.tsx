@@ -6,7 +6,6 @@ const EntityStats = ({statType, strength, intelligence, origin, details} : any) 
             <p>Strength: {strength}</p>
             <p>Intelligence: {intelligence}</p>
             <p>Origin: {origin}</p>
-            <br/>
             <p>{details}</p>
         </div>
     )

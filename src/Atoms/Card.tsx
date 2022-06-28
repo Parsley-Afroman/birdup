@@ -1,10 +1,10 @@
 import { ReactElement } from "react"
 
-const Card = () : ReactElement<HTMLDivElement> => {
+const Card = (props : any) : ReactElement<HTMLDivElement> => {
 return (
         <>
             <div className="card">
-                
+                {props.children}
             </div>
         </>
     )
