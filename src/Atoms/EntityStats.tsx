@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 
-function EntityStats ({statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> {
+function EntityStats ({statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> 
+{
     return (
         <div className={statType}>
             <p>Strength: {strength}</p>
@@ -8,7 +9,7 @@ function EntityStats ({statType, strength, intelligence, origin, details} : any)
             <p>Origin: {origin}</p>
             <p>{details}</p>
         </div>
-    )
+    );
 }
 
-export default EntityStats
+export default EntityStats;

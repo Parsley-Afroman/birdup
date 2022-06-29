@@ -1,15 +1,13 @@
-import ApiService from "./ApiService";
-
 
 const BirdService = {
    
-    GetAllBirds: async () : Promise<any> => 
+    GetAllBirds: async (ApiService : any) : Promise<any> => 
     {
         const allBirdsRequest = await ApiService('/birds');
         return allBirdsRequest;
     },
 
-    GetSingleBird: (birdID : Number) : Promise<any> =>
+    GetSingleBird: (ApiService : any, birdID : Number) : Promise<any> =>
     {
         const singleBirdRequest = ApiService(`/bird/${birdID}`);
         return singleBirdRequest;

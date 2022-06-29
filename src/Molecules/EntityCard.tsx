@@ -4,7 +4,8 @@ import EntityImage from '../Atoms/EntityImage';
 import EntityStats from '../Atoms/EntityStats';
 import Card from '../Atoms/Card';
 
-function EntityCard ({birdName, imageRef, statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> {
+function EntityCard ({birdName, imageRef, statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> 
+{
     return (
         <div className='entityCard'>
             <Card>
@@ -13,7 +14,7 @@ function EntityCard ({birdName, imageRef, statType, strength, intelligence, orig
                 <EntityStats statType = {statType} strength = {strength} intelligence = {intelligence} origin = {origin} details = {details}/>
             </Card>
         </div>
-    )
+    );
 }
 
-export default EntityCard
+export default EntityCard;

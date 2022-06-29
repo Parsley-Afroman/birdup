@@ -1,7 +1,8 @@
-import { ButtonHTMLAttributes, PropsWithRef, ReactElement } from "react"
+import {ReactElement } from "react";
 
-function Header () : ReactElement<HTMLHeadingElement> {
-return <h1>BirdUp</h1>
+function Header () : ReactElement<HTMLHeadingElement> 
+{
+    return <h1>BirdUp</h1>;
 }
 
-export default Header
+export default Header;
