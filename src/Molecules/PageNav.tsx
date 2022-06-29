@@ -1,7 +1,13 @@
 import NavButton from "../Atoms/NavButton";
 import ActionButton from "../Atoms/ActionButton";
 
-function PageNav ({leftDirection, rightDirection, action} : any) 
+interface pageNavProps {
+    leftDirection: string;
+    rightDirection: string;
+    action: string;
+}
+
+function PageNav ({leftDirection, rightDirection, action} : pageNavProps) 
 {
     return (
         <nav>

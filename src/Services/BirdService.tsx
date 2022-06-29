@@ -3,13 +3,13 @@ const BirdService = {
    
     GetAllBirds: async (ApiService : any) : Promise<any> => 
     {
-        const allBirdsRequest = await ApiService('/birds');
+        const allBirdsRequest : Promise<JSON> = await ApiService('/birds');
         return allBirdsRequest;
     },
 
     GetSingleBird: (ApiService : any, birdID : Number) : Promise<any> =>
     {
-        const singleBirdRequest = ApiService(`/bird/${birdID}`);
+        const singleBirdRequest : Promise<JSON> = ApiService(`/bird/${birdID}`);
         return singleBirdRequest;
     },
 }

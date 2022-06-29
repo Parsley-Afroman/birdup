@@ -1,9 +1,13 @@
 import { ReactElement } from 'react';
 import Duck from '../Assets/Duck.svg';
 
-function DuckGraphic ({opposite} : any) : ReactElement<HTMLImageElement> 
+interface duckProps {
+    oppositeTrue: boolean;
+}
+
+function DuckGraphic ({oppositeTrue} : duckProps) : ReactElement<HTMLImageElement> 
 {
-    return <img className="duck" src={Duck}/>;
+    return <img className={'duck' + (oppositeTrue  ? 'right' : 'left')} src={Duck}/>;
     
 }
 

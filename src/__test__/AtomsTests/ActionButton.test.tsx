@@ -14,10 +14,5 @@ describe('ActionButton Render', () =>
         const linkElement = screen.getByText(/nope/i);
         expect(linkElement).toBeInTheDocument();
     }); 
-    test('renders button malformed test', () => {
-        render(<ActionButton action={[]} />);
-        const linkElement = screen.getByText(/nope/i);
-        expect(linkElement).toBeInTheDocument();
-    })
 
 })

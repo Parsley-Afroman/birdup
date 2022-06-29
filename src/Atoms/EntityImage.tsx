@@ -1,6 +1,10 @@
 import { ReactElement } from 'react';
 
-function EntityImage ({imageRef} : any) : ReactElement<HTMLImageElement> 
+interface entityImageProps {
+    imageRef: string
+}
+
+function EntityImage ({imageRef} : entityImageProps) : ReactElement<HTMLImageElement> 
 {
     return <img className="entityImage" src={imageRef}/>;
     

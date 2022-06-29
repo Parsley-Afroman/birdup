@@ -4,7 +4,17 @@ import EntityImage from '../Atoms/EntityImage';
 import EntityStats from '../Atoms/EntityStats';
 import Card from '../Atoms/Card';
 
-function EntityCard ({birdName, imageRef, statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> 
+interface entityCardProps {
+    birdName: string;
+    imageRef: string;
+    statType: string;
+    strength: number;
+    intelligence: number;
+    origin: string;
+    details: string;
+}
+
+function EntityCard ({birdName, imageRef, statType, strength, intelligence, origin, details} : entityCardProps) : ReactElement<HTMLElement> 
 {
     return (
         <div className='entityCard'>

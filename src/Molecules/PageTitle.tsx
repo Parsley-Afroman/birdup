@@ -1,13 +1,18 @@
 import CloudGraphic from "../Atoms/CloudGraphic";
 import Header from "../Atoms/Header";
 
-function PageTitle ({opposite} : any) 
+interface pageTitleProps {
+    oppositeTrue: boolean;
+    oppositeFalse: boolean;
+}
+
+function PageTitle ({oppositeTrue, oppositeFalse} : pageTitleProps) 
 {
     return (
         <header>
-            <CloudGraphic/>
+            <CloudGraphic opposite={oppositeFalse}/>
             <Header/>
-            <CloudGraphic opposite={opposite}/>     
+            <CloudGraphic opposite={oppositeTrue}/>     
         </header>
     );
 }

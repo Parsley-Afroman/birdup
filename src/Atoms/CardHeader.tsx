@@ -1,6 +1,10 @@
 import { ReactElement } from 'react';
 
-function CardHeader ({birdName} : any) : ReactElement<HTMLElement> 
+interface birdProps {
+    birdName: string;
+}
+
+function CardHeader ({birdName} : birdProps) : ReactElement<HTMLElement> 
 {
     return <h3>{birdName}</h3>;
 }

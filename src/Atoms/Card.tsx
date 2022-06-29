@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-function Card (props : any) : ReactElement<HTMLDivElement> 
+function Card (props : any ) : ReactElement<HTMLDivElement> 
 {
     return (
             <>

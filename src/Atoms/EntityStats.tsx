@@ -1,6 +1,14 @@
 import { ReactElement } from 'react';
 
-function EntityStats ({statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> 
+interface entityStatsProps {
+    statType: string;
+    strength: number;
+    intelligence: number;
+    origin: string;
+    details: string
+}
+
+function EntityStats ({statType, strength, intelligence, origin, details} : entityStatsProps) : ReactElement<HTMLElement> 
 {
     return (
         <div className={statType}>

@@ -1,10 +1,19 @@
 import CardArray from "../Organisms/CardArray"
 import PageBanner from "../Organisms/PageBanner"
 
-function HomeTemplate ({birdData, opposite, leftDirection, rightDirection, action} : any) {
+interface homeTemplateProps {
+    birdData: object;
+    oppositeTrue: boolean;
+    oppositeFalse: boolean; 
+    leftDirection: string; 
+    rightDirection: string; 
+    action: string;
+}
+
+function HomeTemplate ({birdData, oppositeTrue, oppositeFalse, leftDirection, rightDirection, action} : homeTemplateProps) {
 return (
     <>
-        <PageBanner opposite={opposite} leftDirection={leftDirection} rightDirection={rightDirection} action={action}/>
+        <PageBanner oppositeTrue={oppositeTrue} oppositeFalse={oppositeFalse} leftDirection={leftDirection} rightDirection={rightDirection} action={action}/>
         <CardArray birdData={birdData}/>
     </>
 )
