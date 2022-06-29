@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-const CardHeader = ({birdName} : any) : ReactElement<HTMLElement> => {
+function CardHeader ({birdName} : any) : ReactElement<HTMLElement> {
     return <h3>{birdName}</h3>
 }
 

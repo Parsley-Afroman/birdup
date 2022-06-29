@@ -1,6 +1,6 @@
 import { ReactElement } from "react"
 
-const Card = (props : any) : ReactElement<HTMLDivElement> => {
+function Card (props : any) : ReactElement<HTMLDivElement> {
 return (
         <>
             <div className="card">

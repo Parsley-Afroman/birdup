@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import EntityCard from "../Molecules/EntityCard";
 import BirdService from "../Services/BirdService";
 
-function CardArray () {
-    const [birdData, setBirdData] = useState([])
-    useEffect(() => {
-        BirdService.GetAllBirds().then(response => {setBirdData(response.data)})
-    }, [])
+function CardArray ({birdData} : any) {
 
     function render (birdData : any){
         let result : any[] = []
@@ -18,9 +14,9 @@ function CardArray () {
         })
     }
     return (
-        <div className="cardArray">
+        <main className="cardArray">
        {render(birdData)}
-        </div>
+        </main>
     )
 }
 

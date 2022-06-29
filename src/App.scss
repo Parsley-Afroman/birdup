@@ -15,6 +15,28 @@ html {
     
 }
 
+@keyframes slideLeft {
+    from {
+        position: relative;
+        right: 0px;
+    }
+    to {
+        position: relative;
+        right: 5%;
+        }
+}
+
+@keyframes slideRight {
+    from {
+        position: relative;
+        left: 0px;
+    }
+    to {
+        position: relative;
+        left: 5%;
+        }
+}
+
 @mixin button ($width, $height, $bg-color, $br, $b-color){
     width: $width;
     height: $height;
@@ -32,6 +54,7 @@ html {
     background: var(--primaryColor);
     border: 9px solid #FEFEFF;
     border-radius: 40px;
+    margin: 20px 0 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,13 +94,32 @@ html {
     text-align: center;
     letter-spacing: 0.1em;
     color: var(--primaryColor);
+    transition: all .2s ease-in-out;
+
+    &:hover {
+        color: var(--secondaryColor);
+    }
 
 }
 
-.cloud, .right{
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 90px 0 90px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 45px 90px 45px 90px;
+}
+
+.right{
     width: 534px;
     height: 165px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
+    transform: scaleX(-1);
 }
 
 .entityImage {
@@ -95,13 +137,17 @@ button {
 }
 
 .down {
-    position: absolute;
-    transform: matrix(-1, 1);
     @include navButton();
+    transform: scaleX(-1);
+    transform: scaleY(-1);
+    position: relative;
+    top: 20px;
 }
 
 .up {
     @include navButton();
+    position: relative;
+    bottom: 20px;
 }
 
 h1 {
@@ -122,4 +168,20 @@ h3 {
     text-align: center;
     letter-spacing: 0.1em;
     color: #000000;
+}
+
+.cardArray {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.cloud.left {
+    animation: slideRight 5s infinite;
+    animation-direction: alternate;
+}
+
+.cloud.right {
+    animation: slideLeft 5s infinite;
+    animation-direction: alternate;
 }

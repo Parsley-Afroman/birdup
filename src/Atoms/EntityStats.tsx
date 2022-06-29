@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-const EntityStats = ({statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> => {
+function EntityStats ({statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> {
     return (
         <div className={statType}>
             <p>Strength: {strength}</p>

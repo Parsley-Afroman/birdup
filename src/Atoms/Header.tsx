@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, PropsWithRef, ReactElement } from "react"
 
-const Header = () : ReactElement<HTMLHeadingElement> => {
+function Header () : ReactElement<HTMLHeadingElement> {
 return <h1>BirdUp</h1>
 }
 
