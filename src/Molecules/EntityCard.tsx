@@ -7,7 +7,6 @@ import Card from '../Atoms/Card';
 const EntityCard = ({birdName, imageRef, statType, strength, intelligence, origin, details} : any) : ReactElement<HTMLElement> => {
     return (
         <div className='entityCard'>
-            {/* need to nest components within the Card Component */}
             <Card>
                 <CardHeader birdName = {birdName}/>
                 <EntityImage imageRef = {imageRef}/>
