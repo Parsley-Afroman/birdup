@@ -10,7 +10,8 @@ function HomePage ({method}  : homePageProps)
 {
     const [birdData, setBirdData] : [object, Function]= useState([]);
     const [entity, setEntity] : [number, Function]= useState(1);
-    useEffect(() => {
+    useEffect(() => 
+    {
         BirdServiceController(method, entity).then((response : any) => {setBirdData(response)});
     }, [])
     return (
