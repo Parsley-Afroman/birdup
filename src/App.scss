@@ -2,6 +2,7 @@
     --primaryColor: #FFDB5E;
     --secondaryColor: #7948AC;
     --backgroundColor: #4AD0E280;
+    --modalBackgroundColor: #4AD0E254;
 }
 
 * {
@@ -12,7 +13,7 @@
 
 html {
     background-color: var(--backgroundColor);
-    
+    font-size: 62.5%;
 }
 
 @keyframes slideLeft {
@@ -102,6 +103,32 @@ html {
 
 }
 
+@mixin screenOverlay($bg) {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: $bg;
+}
+
+@mixin modalBoxOutline($bg) {
+    height: 90vh;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 15px solid #000000;
+    border-radius: 60px;
+    background-color: $bg ;
+}
+
+@mixin modalBox(){
+    height: 95%;
+    width: 95%;
+    background: #FEFEFF;
+    border: 10px solid #000000;
+    border-radius: 30px;
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -184,4 +211,49 @@ h3 {
 .cloud.right {
     animation: slideLeft 5s infinite;
     animation-direction: alternate;
+}
+
+.modalBackground {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include screenOverlay(var(--modalBackgroundColor));
+
+    .modalBoxOutline,  .add {
+        @include modalBoxOutline(var(--primaryColor));
+
+        .modalBox {
+            @include modalBox();
+
+            .duckleft {
+                position: relative;
+                top: 5%;
+                left: 5%;
+                height: 40%;
+            }
+        }
+    }
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 20vh;
+
+    .formInput{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#maintainFrame {
+    display: none;
+}
+
+
+.hide {
+    display: none;
 }

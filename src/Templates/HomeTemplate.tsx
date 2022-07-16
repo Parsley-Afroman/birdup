@@ -1,3 +1,6 @@
+import DuckGraphic from "../Atoms/DuckGraphic";
+import Modal from "../Atoms/Modal";
+import AddForm from "../Molecules/AddForm";
 import CardArray from "../Organisms/CardArray"
 import PageBanner from "../Organisms/PageBanner"
 
@@ -10,9 +13,13 @@ interface homeTemplateProps {
     action: string;
 }
 
-function HomeTemplate ({birdData, oppositeTrue, oppositeFalse, leftDirection, rightDirection, action} : homeTemplateProps) {
+function HomeTemplate ({birdData, oppositeTrue, oppositeFalse, leftDirection, rightDirection, action} : homeTemplateProps, props : any) {
 return (
     <>
+        <Modal type={'add'} display={''}>
+            <DuckGraphic oppositeTrue={false}/>
+            <AddForm/>
+        </Modal>
         <PageBanner oppositeTrue={oppositeTrue} oppositeFalse={oppositeFalse} leftDirection={leftDirection} rightDirection={rightDirection} action={action}/>
         <CardArray birdData={birdData}/>
     </>
