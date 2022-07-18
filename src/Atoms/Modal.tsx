@@ -1,14 +1,10 @@
-interface modalProps {
-    display?: string | '',
-}
-
 function Modal(props : any)
 {
     return (
         <>
             <div className={"modalBackground " + props.type + ' ' + props.display}>
                 <div className="modalBoxOutline">
-                    <div className="modalBox">
+                    <div id={props.id} className="modalBox">
                         {props.children}
                     </div>
                 </div>

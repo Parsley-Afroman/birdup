@@ -3,6 +3,7 @@
     --secondaryColor: #7948AC;
     --backgroundColor: #4AD0E280;
     --modalBackgroundColor: #4AD0E254;
+    font-size: 62.5%;
 }
 
 * {
@@ -13,7 +14,6 @@
 
 html {
     background-color: var(--backgroundColor);
-    font-size: 62.5%;
 }
 
 @keyframes slideLeft {
@@ -124,9 +124,43 @@ html {
 @mixin modalBox(){
     height: 95%;
     width: 95%;
+    padding: 30px;
     background: #FEFEFF;
     border: 10px solid #000000;
     border-radius: 30px;
+    display: flex;
+}
+
+@mixin form($rangeWidth){
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        height: 20vh;
+        margin: 30px;
+        
+        .formInput{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rangeInput {
+            display: flex;
+            justify-content: space-between;
+
+            @media only screen and (max-width: 740px) {
+                flex-direction: column;
+            }
+
+            .range{
+                width: $rangeWidth;
+                @media only screen and (max-width: 740px) {
+                    position: relative;
+                    left: 30%;
+                    transform: rotate(90deg);
+                    width: 15%;
+                }
+            }
+        }
 }
 
 header {
@@ -227,9 +261,6 @@ h3 {
             @include modalBox();
 
             .duckleft {
-                position: relative;
-                top: 5%;
-                left: 5%;
                 height: 40%;
             }
         }
@@ -237,16 +268,8 @@ h3 {
 }
 
 
-form {
-    display: flex;
-    flex-direction: column;
-    width: 50vw;
-    height: 20vh;
-
-    .formInput{
-        display: flex;
-        flex-direction: column;
-    }
+#createBird {
+  @include form(50%);
 }
 
 #maintainFrame {
