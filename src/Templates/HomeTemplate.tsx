@@ -16,7 +16,7 @@ interface homeTemplateProps {
 function HomeTemplate ({birdData, oppositeTrue, oppositeFalse, leftDirection, rightDirection, action} : homeTemplateProps, props : any) {
 return (
     <>
-        <Modal type={'add'} display={''} id={'addBird'}>
+        <Modal type={'add'} display={'hide'} id={'addBird'}>
             <DuckGraphic oppositeTrue={false}/>
             <AddForm formName={'createBird'}/>
         </Modal>

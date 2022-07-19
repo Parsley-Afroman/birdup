@@ -16,15 +16,24 @@ interface formInput {
 
 
 function FormInput ({type, name, label, label2, value, value2, min, max, setFormData, formData, placeholder} : formInput) : ReactElement<HTMLElement> {
-    
+    const [abilityValue, setAbiltyValue] = useState(0)
+
+    // need a sum so that when ability value = 10 the intValue = 10 and strValue = 0, and vice versa for when ability value = 0
+
+    let strValue = 10 - abilityValue 
+    let intValue = abilityValue 
 
     const onChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-            setFormData((prevState: any) => ({
-                ...prevState, 
-                [e.target.name]: e.target.value,
-                
-            }))
-            console.log(formData)
+            if(e.target.name == 'abilities'){
+                setAbiltyValue(parseInt(e.target.value))
+                console.log(abilityValue)
+            }
+
+            // setFormData((prevState: any) => ({
+            //     ...prevState, 
+            //     [e.target.name]: e.target.value,
+            // }))
+            // console.log(formData)
         }
     let rangeType : boolean
     type == 'range' ? rangeType = true : rangeType = false
@@ -32,13 +41,22 @@ function FormInput ({type, name, label, label2, value, value2, min, max, setForm
     return (
         <div className="formInput">
                 {!rangeType && <label>{label}</label>}
-            <div className={rangeType ? 'rangeInput' : 'regInput'}>
-                {rangeType && <><label>{label}</label></>}
-                <input id={rangeType ? 'range' : ''} className={rangeType ? 'range' : 'reg'} type={type} name={name} value={value} min={min} max={max} placeholder={placeholder} onChange={onChange}></input>
-                {value2 && <input type={type} name={name} value={value2} min={min} max={max} onChange={onChange}></input>}
-                {label2 && <><label>{label2}</label></>}
+            <div className={rangeType ? 'rangeInput' : value2 ? 'radioInput' : 'regInput'}>
+                {rangeType && <><label>{`${label} -> ${strValue}`}</label></>}
+                {value2  && <label>Yes</label>}
+                <div className="inputOuterRim">
+                        <input id={rangeType ? 'range' : ''} className={rangeType ? 'range' : value2 ? 'radio' : 'reg'} type={type} name={name} value={value} min={min} max={max} placeholder={placeholder} onChange={onChange}></input>
+                </div>
+            
+                {value2  && <>
+                <label>No</label>
+                    <div className="inputOuterRim">
+                        <input className='radio' type={type} name={name} value={value2} min={min} max={max} onChange={onChange}></input>
+                    </div>
+                    </>}
+                {label2 && <><label>{`${intValue} <- ${label2}`}</label></>}
+               
             </div>
-       
         </div>
     )
 }
