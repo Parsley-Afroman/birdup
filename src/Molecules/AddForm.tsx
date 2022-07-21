@@ -4,13 +4,14 @@ import FormInput from "../Atoms/FormInput";
 
 interface formProps{
     formName: string,
+    formType?: string,
     id?: string,
 }
 
-function AddForm({formName, id} : formProps){
+function AddForm({formName, formType, id} : formProps){
     // onSubmit, pass form data throught to the ApiService.PostService
     return (
-        <div id={id}>
+        <div id={id} className={formType}>
             <iframe name="maintainFrame" id="maintainFrame"></iframe>
             <form id={formName} method='post' onSubmit={()=>{}} target="maintainFrame">
                 <FormInput type={'text'} name={'name'} label={'What is my name?'} placeholder={'Call me...'}/>

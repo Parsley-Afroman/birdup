@@ -43,16 +43,20 @@ function FormInput ({type, name, label, label2, value, value2, min, max, setForm
                 {!rangeType && <label>{label}</label>}
             <div className={rangeType ? 'rangeInput' : value2 ? 'radioInput' : 'regInput'}>
                 {rangeType && <><label>{`${label} -> ${strValue}`}</label></>}
-                {value2  && <label>Yes</label>}
-                <div className="inputOuterRim">
-                        <input id={rangeType ? 'range' : ''} className={rangeType ? 'range' : value2 ? 'radio' : 'reg'} type={type} name={name} value={value} min={min} max={max} placeholder={placeholder} onChange={onChange}></input>
+                <div className={value2 ? 'radioValue' : ''}>
+                    {value2  && <label>Yes</label>}
+                    <div className="inputOuterRim">
+                            <input id={rangeType ? 'range' : ''} className={rangeType ? 'range' : value2 ? 'radio' : 'reg'} type={type} name={name} value={value} min={min} max={max} placeholder={placeholder} onChange={onChange}></input>
+                    </div>
                 </div>
             
                 {value2  && <>
-                <label>No</label>
-                    <div className="inputOuterRim">
-                        <input className='radio' type={type} name={name} value={value2} min={min} max={max} onChange={onChange}></input>
-                    </div>
+                <div className="radioValue">
+                    <label>No</label>
+                        <div className="inputOuterRim">
+                            <input className='radio' type={type} name={name} value={value2} min={min} max={max} onChange={onChange}></input>
+                        </div>
+                </div>
                     </>}
                 {label2 && <><label>{`${intValue} <- ${label2}`}</label></>}
                
