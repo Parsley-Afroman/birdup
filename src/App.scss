@@ -476,8 +476,8 @@ h3 {
     align-items: center;
     // @include screenOverlay(var(--modalBackgroundColor));
     z-index: 2;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: var(--modalBackgroundColor);
 
     .modalBoxOutline, .add {
@@ -497,7 +497,7 @@ h3 {
             // @include modalBox();
             height: 94%;
             width: 95%;
-            // overflow: hidden;
+            overflow: hidden;
             padding: calc(1rem + 1vw);
             background: #FEFEFF;
             border: calc(0.1rem + .5vw + .4vh) solid #000000;
@@ -548,14 +548,14 @@ h3 {
                 }
             }
             .duckBox{
-                // width: 100%;
+                width: 100%;
                 display: flex;
-                // justify-content: flex-start;
+                justify-content: center;
                 align-items: center;
                 img {
                     // position: relative;
                     // right: 40%;
-                    height: calc(10vw + 8vh);
+                    height: calc(15vw + 12vh);
                     // max-height: 50%;
                     margin: 0 auto;
                 }
@@ -579,10 +579,11 @@ form {
         margin-bottom: 1vh;
         margin-right: 1vw;
         width: 45%;
+        min-width: 310px;
 
-        @media only screen and (max-width: 920px) {
-            width: 100%;
-        }
+        // @media only screen and (max-width: 920px) {
+        //     width: 100%;
+        // }
     }
 }
     
@@ -599,7 +600,7 @@ form {
     }
     .reg{
         width: 99%;
-        height: calc(1.8vh + .8vw);
+        height: calc(2.2vh + 1.2vw);
     }
     .radioInput {
         display: flex;
