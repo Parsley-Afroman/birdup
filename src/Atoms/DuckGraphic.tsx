@@ -7,7 +7,7 @@ interface duckProps {
 
 function DuckGraphic ({oppositeTrue} : duckProps) : ReactElement<HTMLImageElement> 
 {
-    return <img className={'duck' + (oppositeTrue  ? 'right' : 'left')} src={Duck}/>;
+    return (<div className='duckBox'><img className={'duck' + (oppositeTrue  ? 'right' : 'left')} src={Duck}/></div>);
     
 }
 

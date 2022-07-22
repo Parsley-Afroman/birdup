@@ -21,11 +21,11 @@ function AddForm({formName, formType, id} : formProps){
                 <FormInput type={'radio'} name={'real'} label={'Did you make me up?'} value={'yes'} value2={'no'}/>
                 <FormInput type={'range'} name={'abilities'} label={'Strength'} label2={'Intelligence'} min={0} max={10}/>
                 <FormInput type={'text'} name={'image'} label={'Upload my image:'} placeholder={'I look rather dashing!'}/>
-                <div className="buttons">
-                    <ActionButton name={'addBtn'} action={'add'}/>
-                    <ActionButton name={'exitBtn'} action={'exit'}/>
-                </div>
             </form>
+            <div className="buttons">
+                    <ActionButton btnType={'submit'} btnForm={formName} name={'addBtn'} action={'add'}/>
+                    <ActionButton btnType={'submit'} btnForm={formName} name={'exitBtn'} action={'exit'}/>
+            </div>
         </div>
     )
 }
