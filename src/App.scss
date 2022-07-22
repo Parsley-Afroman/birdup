@@ -299,6 +299,7 @@ a {
             
             input {
                 width: 100%;
+                margin: 0;
                 padding-left: 0;
                 cursor: pointer;
                 -webkit-appearance: none;
@@ -307,8 +308,8 @@ a {
 
                 &::-webkit-slider-thumb {
                     -webkit-appearance: none;
-                    width: calc(2vh + 1vw);
-                    height: calc(2vh + 1vw);
+                    width: calc(1.8vh + .8vw);
+                    height: calc(1.8vh + .8vw);
                     // width: 25%;
                     // height: 100%;
                     border: calc(0.3vh + 0.1vw) solid black;
@@ -323,7 +324,7 @@ a {
                 }
 
                 &::-webkit-slider-runnable-track {
-                    height: calc(2vh + 1vw);
+                    height: calc(1.8vh + .8vw);
                 }
 
             }
