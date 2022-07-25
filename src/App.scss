@@ -552,6 +552,7 @@ h3 {
                     font-size: calc(1rem + .4vh + .8vw);
                     &:hover{
                         background-color: var(--primaryColor);
+                        color: var(--secondaryColor);
                     }
                     
                 }
@@ -566,7 +567,7 @@ h3 {
                     // right: 40%;
                     height: calc(12vw + 12vh);
                     // max-height: 50%;
-                    margin: 0 auto;
+                    margin: 0 auto 2% auto;
                 }
             }
          
