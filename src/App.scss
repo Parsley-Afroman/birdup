@@ -1,3 +1,9 @@
+/*
+TODO:   -   Ensure no px measurements are used
+        -   Create mixins where they can be made and include where required
+        -   Ensure all colours are included in the root
+*/
+
 :root {
     --primaryColor: #FFDB5E;
     --secondaryColor: #7948AC;
@@ -5,8 +11,13 @@
     --modalBackgroundColor: #4AD0E254;
 }
 
+@mixin fontOutline ($color) {
+    text-shadow: -.1rem -.1rem 0 $color, .1rem -.1rem 0 $color, -.1rem .1rem 0 $color, .1rem .1rem 0 $color;
+}
+
 * {
     box-sizing: border-box;
+    // as I am using the same font througout, this is what determines the baseline text sizing
     font-family: 'indy pimp';
     font-weight: 700;
     font-size: calc(1rem + .1vw + .6vh);
@@ -14,20 +25,19 @@
 
 html {
     background-color: var(--backgroundColor);
+    // ensures REMs are relaive to px e.g. 1rem = 10px
     font-size: 62.5%;
 }
 
 h1 {
-    // 0.8vw seems to be a good responsive measure
-    font-size: calc(6rem + 2vw);
+    font-size: calc(6rem + 2vw + 1vh);
     text-align: center;
     letter-spacing: 0.3rem;
     color: var(--primaryColor);
-    // keeps the title infront of the cloud decoration
     z-index: 1;
-    // removes h1s auto margin 
     margin: calc(3rem + .8vw)  0 0 0;
-
+    // ended up uising a shadow to create an outline as the webkit-text-stroke does not work with the font-family
+    @include fontOutline(#000);
 }
 
 header {
@@ -35,12 +45,11 @@ header {
     justify-content: center;
     .cloud {
         height: calc(7.5vh + 3vw);
-        // keeps the clouds from the top and inline with the title
-        margin: 3.5vh 0 0 0;
+        // ensures the clouds always go to the back of all elements
         z-index: 0;
-        // @media only screen and (max-width: 500px) {
-        // keeps the clouds from the top and inline with the title
-            margin: 5vh 0 0 0;
+        // keeps the clouds down from the top of the screen
+        margin: 5vh 0 0 0;
+        // keeps the clouds in a position relative to the page title
             &.left{
                 position: relative;
                 left: 40%;
@@ -49,229 +58,65 @@ header {
                 position: relative;
                 right: 40%;
             }
-        // }
     }
     
 }
 
+// up and down navigation button styling
 a {
-    // width: 47rem;
-    // height: 30rem;
     text-decoration: none;
     font-size: calc(5rem + 2vw + 4vh);
-    // line-height: 127px;
     text-align: center;
-    // letter-spacing: 0.1em;
     color: var(--primaryColor);
     transition: all .2s ease-in-out;
+    -webkit-text-stroke: calc(.1rem + .2vh + .1vw)  #000000;
 
     &:hover {
         color: var(--secondaryColor);
+        -webkit-text-stroke: calc(.1rem + .2vh + .1vw)  var(--primaryColor);
+        
     }
+    /*
+        Positioning the navigation anchors as flipping the one on the right misaligned them 
+    */
     &.up{
         position: relative;
-            bottom: calc(-1.8rem + -.8vw);
+        bottom: calc(-1.8rem + -.8vw);
     }
     &.down{
-            transform: scaleX(-1);
-            transform: scaleY(-1);
-            position: relative;
-            top:calc(-1.8rem + -.8vw);
+        transform: scaleX(-1);
+        transform: scaleY(-1);
+        position: relative;
+        top:calc(-1.8rem + -.8vw);
     }
 }
 
+.inputOuterRim{
+    background: #FFDB5E;
+    border: calc(.3vh + .1vw) solid #000000;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    padding: calc(.3vh + .1vw);
 
-// @keyframes slideLeft {
-//     from {
-//         position: relative;
-//         right: 0px;
-//     }
-//     to {
-//         position: relative;
-//         right: 5%;
-//         }
-// }
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
+}
 
-// @keyframes slideRight {
-//     from {
-//         position: relative;
-//         left: 0px;
-//     }
-//     to {
-//         position: relative;
-//         left: 5%;
-//         }
-// }
-
-// @mixin button ($width, $height, $bg-color, $br, $b-color, $hv-color){
-//     width: $width;
-//     height: $height;
-//     background: $bg-color;
-//     border: 5px solid $b-color;
-//     border-radius: $br;
-//     font-size: 55px;
-//     text-align: center;
-//     letter-spacing: 0.1em;
-
-//     &:hover{
-//         background-color: $hv-color;
-//     }
-// }
-
-// @mixin card {
-//     width: 397px;
-//     height: 530px;
-//     background: var(--primaryColor);
-//     border: 9px solid #FEFEFF;
-//     border-radius: 40px;
-//     margin: 20px 0 20px 0;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     padding: 20px;
-//     transition: all .2s ease-in-out;
-
-//     h3 {
-//         margin: 15px 0 5px 0;
-
-//     }
-
-//     &:hover {
-//         border-color: var(--secondaryColor);
-//         transform: scale(1.1);
-//         box-shadow: (11px 12px 21px #7948AC28);
-//     }
-   
-// }
-
-// @mixin header ($f-s, $f-c) {
-//     width: 1495px;
-//     height: 166px;
-    
-//     font-size: $f-s;
-//     text-align: center;
-//     letter-spacing: 0.1em;
-//     color: $f-c;
-// }
-
-// @mixin navButton () {
-//     width: 47px;
-//     height: 30px;
-//     text-decoration: none;
-//     font-size: 110px;
-//     line-height: 127px;
-//     text-align: center;
-//     letter-spacing: 0.1em;
-//     color: var(--primaryColor);
-//     transition: all .2s ease-in-out;
-
-//     &:hover {
-//         color: var(--secondaryColor);
-//     }
-
-// }
-
-// @mixin screenOverlay($bg) {
-//     z-index: 1;
-//     width: 100%;
-//     height: 100%;
-//     background-color: $bg;
-// }
-
-// @mixin modalBoxOutline($bg) {
-//     height: 90vh;
-//     width: 90vw;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     border: 15px solid #000000;
-//     border-radius: 60px;
-//     background-color: $bg ;
-// }
-
-// @mixin modalBox(){
-//     height: 80vh;
-//     min-height: fit-content;
-//     width: 82.5vw;
-//     padding: 30px;
-//     background: #FEFEFF;
-//     border: 10px solid #000000;
-//     border-radius: 30px;
-//     display: flex;
-//     flex-wrap: wrap;
-// }
-
-// @mixin form($rangeWidth){
-//         display: flex;
-//         flex-direction: column;
-//         width: 50vw;
-//         height: 20vh;
-//         margin: 30px;
-        
-//         .formInput{
-//             display: flex;
-//             flex-direction: column;
-//             margin: 20px 0 20px 0;
-//             font-size: 2rem;
-
-//             @media only screen and (max-width: 600px){
-//                 margin: 0;
-//             }
-
-//             label{
-//                 margin: 0 0 1vh 0 ;
-//                 // dynamic font size which may be best to be set on the whole document
-//                 font-size: calc(1rem + .8vw);
-//             }
-
-            .inputOuterRim{
-                background: #FFDB5E;
-                border: calc(.3vh + .1vw) solid #000000;
-                border-radius: 60px;
-                display: flex;
-                justify-content: center;
-                padding: calc(.3vh + .1vw);
-
-                @media only screen and (max-width: 600px) {
-                    width: 100%;
-                }
-            }
-
-            input{
-                width: 95%;
-                // font-size: calc(.4vw + .8vh);
-                border: calc(.3vh + .1vw) solid #000000;
-                border-radius: 60px;
-                padding-left: 15px;
-            }
-//         }
-
-//         .formInput:nth-child(-n+4){
-//             position: relative;
-//             left: 20%;
-
-//             @media only screen and (max-width: 600px) {
-//                 left: 0;
-//             }
-//         }
-
-//         .formInput:nth-child(n+4){
-//            position: relative;
-//            right: 14vw;
-//         }
+input{
+    width: 95%;
+    border: calc(.3vh + .1vw) solid #000000;
+    border-radius: 60px;
+    padding-left: 15px;
+}
 
         .radioInput{
             display: flex;
             justify-content: space-between;
             .inputOuterRim{
-                // width: fit-content;
-                // display: flex;
-                // justify-content: center;
-                // align-items: center;
                 border-radius: 50%;
                 .radio{
-                    // width: 20px;
                     -webkit-appearance: none;
                     appearance: none;
                     margin: 0;
@@ -290,7 +135,6 @@ a {
         .rangeInput {
             display: flex;
             justify-content: center;
-            // width: 150%;
 
             label {
                 font-size: calc(1rem + 0.5vw);
@@ -310,14 +154,9 @@ a {
                     -webkit-appearance: none;
                     width: calc(1.8vh + .8vw);
                     height: calc(1.8vh + .8vw);
-                    // width: 25%;
-                    // height: 100%;
                     border: calc(0.3vh + 0.1vw) solid black;
                     border-radius: 50%;
                     background-color: var(--primaryColor);
-                    // margin-top: -.2rem;
-                    // position: relative;
-                    // top: 20%;
                     &:hover {
                         background-color: var(--secondaryColor);
                     }
@@ -326,42 +165,16 @@ a {
                 &::-webkit-slider-runnable-track {
                     height: calc(1.8vh + .8vw);
                 }
-
             }
-
-            // @media only screen and (max-width: 740px) {
-            //     flex-direction: column;
-            // }
-
-            // .range{
-            //     // width: 100%;
-            //     @media only screen and (max-width: 600px) {
-            //         width: 100%;
-            //         // position: relative;
-            //         // left: 30%;
-            //     }
-            // }
         }
-// }
-
-// header {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin: 0 90px 0 90px;
-// }
 
 nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    // responsive positioning
-    // margin: 5vh 9vw;
 }
 
 .right {
-    // width: 534px;
-    // height: 165px;
     transform: scaleX(-1);
 }
 
@@ -375,8 +188,8 @@ nav {
 button {
     width: 15%;
     min-width: fit-content;
-    height: calc(8vh + 1.5vw);
-    min-height: calc(4rem + 1.5vw + 1vh);
+    // height: calc(8vh + 1.5vw);
+    // min-height: calc(4rem + 1.5vw + 1vh);
     background: var(--primaryColor);
     border: 5px solid #000000;
     border-radius: calc(1rem + 1vh + .5vw);
@@ -392,7 +205,6 @@ button {
 }
 
 .card {
-    // @include card();
     width: calc(15rem + 3vw + 19vh);
     min-width: fit-content;
     max-width: 100%;
@@ -400,14 +212,12 @@ button {
     min-height: fit-content;
     background: var(--primaryColor);
     border: 9px solid #FEFEFF;
-    // border-radius: 40px;
     border-radius: calc(1rem + 1vh + .5vw);
     margin: 0 .5rem 2rem .5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // padding: 20px;
     transition: all .2s ease-in-out;
 
     h3 {
@@ -418,29 +228,9 @@ button {
     &:hover {
         border-color: var(--secondaryColor);
         transform: scale(1.1);
-        box-shadow: (11px 12px 21px #7948AC28);
+        box-shadow: (1.1rem 1.2rem 2.1rem #7948AC28);
     }
 }
-
-
-
-// .down {
-//     @include navButton();
-//     transform: scaleX(-1);
-//     transform: scaleY(-1);
-//     position: relative;
-//     top: 20px;
-// }
-
-// .up {
-//     @include navButton();
-//     position: relative;
-//     bottom: 20px;
-// }
-
-// h1 {
-//     @include header(110px, var(--primaryColor))
-// }
 
 h3 {
     font-size: calc(1rem + .4vw + 1vh);
@@ -450,13 +240,6 @@ h3 {
     color: #000000;
 }
 
-// .cardStats {
-//     font-size: 20px;
-//     line-height: 23px;
-//     text-align: center;
-//     letter-spacing: 0.1em;
-//     color: #000000;
-// }
 
 .cardArray {
     margin: 2% 0 0 0;
@@ -465,36 +248,23 @@ h3 {
     flex-wrap: wrap;
 }
 
-// // clouds moving impacts responsiveness and aren't very good; practically unecessary
-
-// // .cloud.left {
-// //     animation: slideRight 5s infinite;
-// //     animation-direction: alternate;
-// // }
-
-// // .cloud.right {
-// //     animation: slideLeft 5s infinite;
-// //     animation-direction: alternate;
-// // }
-
 .modalBackground {
     position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    // @include screenOverlay(var(--modalBackgroundColor));
     z-index: 2;
     width: 100%;
     height: 100%;
     background-color: var(--modalBackgroundColor);
 
     .modalBoxOutline, .add {
-        // @include modalBoxOutline(var(--primaryColor));
-        height: calc(70vh + 50vw);
-        max-height: 100%;
+        // height: calc(70vh + 50vw);
+        // max-height: 100%;
+        // min-height: max-content;
+        // width: calc(50vw + 50vh);
         min-height: max-content;
-        width: calc(50vw + 50vh);
-        max-width: 100%;
+        width: 95%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -502,10 +272,12 @@ h3 {
         border-radius: calc(2vh + 5vw);
         background-color: var(--primaryColor) ;
         #addBird {
-            // @include modalBox();
-            height: 94%;
-            width: 95%;
-            overflow: hidden;
+            min-height: 94%;
+            min-width: 94%;
+            // height: 90%;
+            // width: 95%;
+            margin: 2%;
+            // overflow: hidden;
             padding: calc(1rem + 1vw);
             background: #FEFEFF;
             border: calc(0.1rem + .5vw + .4vh) solid #000000;
@@ -514,45 +286,50 @@ h3 {
             flex-wrap: wrap;
 
             .buttons{
-                // display: none;
-            //     position: relative;
-            //     bottom: -1vh;
                 display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
-                margin: 2% 0 0 0;
-                .addBtn {
-                    // @include button(150px, 64.5px, var(--primaryColor), 10px, #000000, var(--secondaryColor));
-                    // width: 30vw;
-                    height: 7vh;
-                    max-width: 10vw;
+                margin: 1% 0 0 0;
+
+                button{
+                    height: calc(2rem + 1vw + 2vh);
                     background: var(--primaryColor);
                     border: calc(.4vh + .2vw) solid #000000;
                     border-radius: 10px;
-                    // font-size: 2px;
                     text-align: center;
                     letter-spacing: 0.1em;
                     font-size: calc(1rem + .4vh + .8vw);
                     &:hover{
                         background-color: var(--secondaryColor);
+                        border-color: var(--primaryColor);
                     }
                 }
+                .addBtn {
+                    // height: 7vh;
+                    // max-width: 10vw;
+                    // background: var(--primaryColor);
+                    // border: calc(.4vh + .2vw) solid #000000;
+                    // border-radius: 10px;
+                    // text-align: center;
+                    // letter-spacing: 0.1em;
+                    // font-size: calc(1rem + .4vh + .8vw);
+                    // &:hover{
+                    //     background-color: var(--secondaryColor);
+                    // }
+                }
                 .exitBtn {
-                    // @include button(150px, 64.5px, var(--secondaryColor), 10px, #000000, var(--primaryColor));
-                    // width: 150px;
-                    // height: 64.5px;
-                    height: 7vh;
-                    max-width: 10vw;
+                    // height: 7vh;
+                    // max-width: 10vw;
                     background: var(--secondaryColor);
-                    border: calc(.4vh + .2vw) solid #000000;
-                    border-radius: 10px;
-                    // font-size: 55px;
-                    text-align: center;
-                    letter-spacing: 0.1em;
-                    font-size: calc(1rem + .4vh + .8vw);
+                    // border: calc(.4vh + .2vw) solid #000000;
+                    // border-radius: 10px;
+                    // text-align: center;
+                    // letter-spacing: 0.1em;
+                    // font-size: calc(1rem + .4vh + .8vw);
                     &:hover{
                         background-color: var(--primaryColor);
                         color: var(--secondaryColor);
+                        border-color: var(--secondaryColor);
                     }
                     
                 }
@@ -563,10 +340,7 @@ h3 {
                 justify-content: center;
                 align-items: center;
                 img {
-                    // position: relative;
-                    // right: 40%;
-                    height: calc(12vw + 12vh);
-                    // max-height: 50%;
+                    height: calc(8vw + 12vh);
                     margin: 0 auto 2% auto;
                 }
             }
@@ -579,38 +353,28 @@ form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    // flex-direction: column;
-    width: 100%;
-    height: 80%;
-    // min-height: max-content;
-    // margin: 30px;
+    // width: 100%;
+    // height: 80%;
 
     .formInput {
         margin-bottom: 1vh;
         margin-right: 1vw;
         width: 45%;
         min-width: 310px;
-
-        // @media only screen and (max-width: 920px) {
-        //     width: 100%;
-        // }
     }
 }
     
 
 .addForm {
     position: relative;
-    width: 100%;
+    // width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
-    label {
-        // font-size: calc(0.5rem + 1.5vh);
-    }
     .reg{
         width: 99%;
-        height: calc(2.2vh + 1.2vw);
+        // height: calc(2.2vh + 1.2vw);
     }
     .radioInput {
         display: flex;
@@ -620,17 +384,7 @@ form {
             display: flex;
         }
     }
-
-    // .addBtn {}
-    // .exitBtn {}
 }
-// #createBird {
-//   @include form(30vw);
-
-//   @media only screen and (max-width: 600px) {
-//     width: 100%;
-//   }
-// }
 
 #maintainFrame {
     display: none;
