@@ -12,37 +12,45 @@ interface formProps{
 }
 
 function AddForm({formName, formType, id, setAddModal} : formProps){
-    // onSubmit, pass form data throught to the ApiService.PostService
-    // submit needs to differentiate between the target of add and exit. e.target.name
-    // useState for all form entries so that they can be passed into the POST service
 
+    // enables the form to be populated on upload & reset on exit
     const defaultFormData = {
                 name: '',
                 origin: '',
                 diet: '',
                 age: 1,
                 real: 0,
-                strength: 0, 
-                intelligence: 0,
+                strength: 5, 
+                intelligence: 5,
                 image: '',
                 
             }
 
+    // The getter and setter for the formData
     const [formData, setFormData] = useState(defaultFormData)
-    useEffect(()=>{console.log(formData)},[formData])
 
+    // checks that the form has been changed and applies a boolean
+    const formChanged = formData.name !== defaultFormData.name &&
+                        formData.origin !== defaultFormData.origin &&
+                        formData.diet !== defaultFormData.diet &&
+                        formData.age >= defaultFormData.age &&
+                        formData.real >= defaultFormData.real ? true : false
+
+    // Submit action for the addForm
     const onSubmit = (e : any) => {
         e.stopPropagation()
-        if(e.target.className === 'addBtn'){
-            console.log('add')
+        if(e.target.className === 'addBtn' && formChanged){
+            // sends the formData to the API Post method
             ApiService.PostApiService.CreateSingleBird(formData)
+            //  resets the form
             setFormData(defaultFormData)
+            // hides the modal
             setAddModal('hide')
         } else
             {
-                console.log('exit') 
+                // resets the form and closes the modal
+                setFormData(defaultFormData)
                 setAddModal('hide')
-
             }
     }
 

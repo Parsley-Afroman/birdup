@@ -16,14 +16,12 @@ interface formInput {
 
 function FormInput ({type, name, label, label2, value, value2, min, max, setFormData, formData, placeholder} : formInput) : ReactElement<HTMLElement> {
     const [abilityValue, setAbiltyValue] = useState(0)
-
-    let strValue = 10 - abilityValue 
-    let intValue = abilityValue 
+    const strValue = 10 - abilityValue 
+    const intValue = abilityValue 
 
     const onChange = (e : React.ChangeEvent<HTMLInputElement>) => {
             if(e.target.name == 'abilities'){
                 setAbiltyValue(parseInt(e.target.value))
-                // console.log(abilityValue)
                 
                 setFormData((prevState : any) => ({
                     ...prevState,
