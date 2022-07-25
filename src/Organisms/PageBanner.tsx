@@ -7,14 +7,15 @@ interface pageBannerProps {
   leftDirection: string; 
   rightDirection: string; 
   action: string;
+  setAddModal: Function;
 }
 
-function PageBanner ({oppositeTrue, oppositeFalse, leftDirection, rightDirection, action} : pageBannerProps) 
+function PageBanner ({oppositeTrue, oppositeFalse, leftDirection, rightDirection, action, setAddModal} : pageBannerProps) 
 {
     return (
       <div id="pageBanner">
         <PageTitle oppositeTrue={oppositeTrue} oppositeFalse={oppositeFalse}/>
-        <PageNav leftDirection={leftDirection} rightDirection={rightDirection} action={action}/>
+        <PageNav leftDirection={leftDirection} rightDirection={rightDirection} action={action} setAddModal={setAddModal}/>
       </div>
     );
 }

@@ -14,11 +14,8 @@ interface formInput {
     placeholder?: string,
 }
 
-
 function FormInput ({type, name, label, label2, value, value2, min, max, setFormData, formData, placeholder} : formInput) : ReactElement<HTMLElement> {
     const [abilityValue, setAbiltyValue] = useState(0)
-
-    // need a sum so that when ability value = 10 the intValue = 10 and strValue = 0, and vice versa for when ability value = 0
 
     let strValue = 10 - abilityValue 
     let intValue = abilityValue 
@@ -26,14 +23,19 @@ function FormInput ({type, name, label, label2, value, value2, min, max, setForm
     const onChange = (e : React.ChangeEvent<HTMLInputElement>) => {
             if(e.target.name == 'abilities'){
                 setAbiltyValue(parseInt(e.target.value))
-                console.log(abilityValue)
+                // console.log(abilityValue)
+                
+                setFormData((prevState : any) => ({
+                    ...prevState,
+                    ['strength']: strValue,
+                    ['intelligence']: intValue,
+                }))
             }
 
-            // setFormData((prevState: any) => ({
-            //     ...prevState, 
-            //     [e.target.name]: e.target.value,
-            // }))
-            // console.log(formData)
+            setFormData((prevState: any) => ({
+                ...prevState,
+                [e.target.name]: e.target.value,
+            }))
         }
     let rangeType : boolean
     type == 'range' ? rangeType = true : rangeType = false

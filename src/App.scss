@@ -9,7 +9,7 @@
     box-sizing: border-box;
     font-family: 'indy pimp';
     font-weight: 700;
-    font-size: calc(1rem + .5vw);
+    font-size: calc(1rem + .1vw + .6vh);
 }
 
 html {
@@ -58,7 +58,7 @@ a {
     // width: 47rem;
     // height: 30rem;
     text-decoration: none;
-    font-size: calc(10rem + 1vw);
+    font-size: calc(5rem + 2vw + 4vh);
     // line-height: 127px;
     text-align: center;
     // letter-spacing: 0.1em;
@@ -373,28 +373,35 @@ nav {
 }
 
 button {
-    width: 15vw;
-    min-width: max-content;
-    height: 8vh;
+    width: 15%;
+    min-width: fit-content;
+    height: calc(8vh + 1.5vw);
+    min-height: calc(4rem + 1.5vw + 1vh);
     background: var(--primaryColor);
     border: 5px solid #000000;
-    border-radius: 30px;
-    font-size: calc(3.8rem + 1vw);
+    border-radius: calc(1rem + 1vh + .5vw);
+    font-size: calc(1rem + 1.5vw + 1vh);
     text-align: center;
     letter-spacing: 0.1em;
 
     &:hover{
         background-color: var(--secondaryColor);
+        border-color: var(--primaryColor);
+        color: var(--primaryColor)
     }
 }
 
 .card {
     // @include card();
-    width: calc(30rem + 6vw);
-    height: calc(40rem + 12vh);
+    width: calc(15rem + 3vw + 19vh);
+    min-width: fit-content;
+    max-width: 100%;
+    height: calc(25rem + 12vh + 12vh);
+    min-height: fit-content;
     background: var(--primaryColor);
     border: 9px solid #FEFEFF;
-    border-radius: 40px;
+    // border-radius: 40px;
+    border-radius: calc(1rem + 1vh + .5vw);
     margin: 0 .5rem 2rem .5rem;
     display: flex;
     flex-direction: column;
@@ -404,7 +411,7 @@ button {
     transition: all .2s ease-in-out;
 
     h3 {
-        margin: 0 0 2rem 0;
+        margin: 0 0 1vh 0;
 
     }
 
@@ -436,7 +443,7 @@ button {
 // }
 
 h3 {
-    font-size: calc(2.8rem + .8vw);
+    font-size: calc(1rem + .4vw + 1vh);
     line-height: 35px;
     text-align: center;
     letter-spacing: 0.1em;
@@ -452,6 +459,7 @@ h3 {
 // }
 
 .cardArray {
+    margin: 2% 0 0 0;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -556,7 +564,7 @@ h3 {
                 img {
                     // position: relative;
                     // right: 40%;
-                    height: calc(15vw + 12vh);
+                    height: calc(12vw + 12vh);
                     // max-height: 50%;
                     margin: 0 auto;
                 }

@@ -13,7 +13,7 @@ const ApiService =
     PostApiService: 
     {   
         
-        CreateSingleBird: () => {
+        CreateSingleBird: (formData : any) => {
             // var details = {
             //     'name': 'test@gmail.com',
             //     'origin': 'Password!',
@@ -24,29 +24,30 @@ const ApiService =
             //     'intelligence': 50,
             //     'image': 'password',
             // };
+            let details = formData
+            console.log(details + 'details YO!')
+            var formBody : any = [];
+            for (var property in details) {
+              var encodedKey = encodeURIComponent(property);
+              var encodedValue = property == 'name' ? encodeURIComponent(details['name']) : 
+                                    property == 'origin' ? encodeURIComponent(details['origin']) :
+                                        property == 'diet' ? encodeURIComponent(details['diet']) :
+                                            property == 'age' ? encodeURIComponent(details['age']) :
+                                                property == 'real' ? encodeURIComponent(details['real']) :
+                                                    property == 'strength' ? encodeURIComponent(details['strength']) :
+                                                        property == 'intelligence' ? encodeURIComponent(details['intelligence']) :
+                                                        encodeURIComponent(details['image']) ;
+              formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
             
-            // var formBody : any = [];
-            // for (var property in details) {
-            //   var encodedKey = encodeURIComponent(property);
-            //   var encodedValue = property == 'name' ? encodeURIComponent(details['name']) : 
-            //                         property == 'origin' ? encodeURIComponent(details['origin']) :
-            //                             property == 'diet' ? encodeURIComponent(details['diet']) :
-            //                                 property == 'age' ? encodeURIComponent(details['age']) :
-            //                                     property == 'real' ? encodeURIComponent(details['real']) :
-            //                                         property == 'strength' ? encodeURIComponent(details['strength']) :
-            //                                             property == 'intelligence' ? encodeURIComponent(details['intelligence']) :
-            //                                             encodeURIComponent(details['image']) ;
-            //   formBody.push(encodedKey + "=" + encodedValue);
-            // }
-            // formBody = formBody.join("&");
-            
-            // fetch(process.env.REACT_APP_API_URL + '/birds', {
-            //   method: 'POST',
-            //   headers: {
-            //     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-            //   },
-            //   body: formBody
-            // })
+            fetch(process.env.REACT_APP_API_URL + '/birds', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+              },
+              body: formBody
+            })
             // resets the values shown in the form
             // const defaultFormData = {
             //     name: '',

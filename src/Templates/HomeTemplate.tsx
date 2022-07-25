@@ -1,3 +1,4 @@
+import { useState } from "react";
 import DuckGraphic from "../Atoms/DuckGraphic";
 import Modal from "../Atoms/Modal";
 import AddForm from "../Molecules/AddForm";
@@ -14,13 +15,15 @@ interface homeTemplateProps {
 }
 
 function HomeTemplate ({birdData, oppositeTrue, oppositeFalse, leftDirection, rightDirection, action} : homeTemplateProps, props : any) {
+
+const [addModal, setAddModal] = useState('hide')
 return (
     <>
-        <Modal type={'add'} display={''} id={'addBird'}>
+        <Modal type={'add'} display={addModal} id={'addBird'}>
             <DuckGraphic oppositeTrue={false}/>
-            <AddForm formName={'createBird'} formType={'addForm'}/>
+            <AddForm formName={'createBird'} formType={'addForm'} setAddModal={setAddModal}/>
         </Modal>
-        <PageBanner oppositeTrue={oppositeTrue} oppositeFalse={oppositeFalse} leftDirection={leftDirection} rightDirection={rightDirection} action={action}/>
+        <PageBanner oppositeTrue={oppositeTrue} oppositeFalse={oppositeFalse} leftDirection={leftDirection} rightDirection={rightDirection} action={action} setAddModal={setAddModal}/>
         <CardArray birdData={birdData}/>
     </>
 )
