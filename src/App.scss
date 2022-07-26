@@ -188,8 +188,6 @@ nav {
 button {
     width: 15%;
     min-width: fit-content;
-    // height: calc(8vh + 1.5vw);
-    // min-height: calc(4rem + 1.5vw + 1vh);
     background: var(--primaryColor);
     border: 5px solid #000000;
     border-radius: calc(1rem + 1vh + .5vw);
@@ -259,10 +257,6 @@ h3 {
     background-color: var(--modalBackgroundColor);
 
     .modalBoxOutline, .add {
-        // height: calc(70vh + 50vw);
-        // max-height: 100%;
-        // min-height: max-content;
-        // width: calc(50vw + 50vh);
         min-height: max-content;
         width: 95%;
         display: flex;
@@ -274,10 +268,7 @@ h3 {
         #addBird {
             min-height: 94%;
             min-width: 94%;
-            // height: 90%;
-            // width: 95%;
             margin: 2%;
-            // overflow: hidden;
             padding: calc(1rem + 1vw);
             background: #FEFEFF;
             border: calc(0.1rem + .5vw + .4vh) solid #000000;
@@ -304,28 +295,9 @@ h3 {
                         border-color: var(--primaryColor);
                     }
                 }
-                .addBtn {
-                    // height: 7vh;
-                    // max-width: 10vw;
-                    // background: var(--primaryColor);
-                    // border: calc(.4vh + .2vw) solid #000000;
-                    // border-radius: 10px;
-                    // text-align: center;
-                    // letter-spacing: 0.1em;
-                    // font-size: calc(1rem + .4vh + .8vw);
-                    // &:hover{
-                    //     background-color: var(--secondaryColor);
-                    // }
-                }
+            
                 .exitBtn {
-                    // height: 7vh;
-                    // max-width: 10vw;
                     background: var(--secondaryColor);
-                    // border: calc(.4vh + .2vw) solid #000000;
-                    // border-radius: 10px;
-                    // text-align: center;
-                    // letter-spacing: 0.1em;
-                    // font-size: calc(1rem + .4vh + .8vw);
                     &:hover{
                         background-color: var(--primaryColor);
                         color: var(--secondaryColor);
@@ -353,8 +325,6 @@ form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    // width: 100%;
-    // height: 80%;
 
     .formInput {
         margin-bottom: 1vh;
@@ -367,14 +337,12 @@ form {
 
 .addForm {
     position: relative;
-    // width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
     .reg{
         width: 99%;
-        // height: calc(2.2vh + 1.2vw);
     }
     .radioInput {
         display: flex;

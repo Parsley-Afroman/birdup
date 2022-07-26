@@ -2,8 +2,8 @@ import { useState } from "react";
 import DuckGraphic from "../Atoms/DuckGraphic";
 import Modal from "../Atoms/Modal";
 import AddForm from "../Molecules/AddForm";
-import CardArray from "../Organisms/CardArray"
-import PageBanner from "../Organisms/PageBanner"
+import CardArray from "../Organisms/CardArray";
+import PageBanner from "../Organisms/PageBanner";
 
 interface homeTemplateProps {
     birdData: object;
