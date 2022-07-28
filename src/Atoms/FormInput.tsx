@@ -67,6 +67,10 @@ function FormInput ({type, name, label, label2, value, value2, min, max, setForm
                 Added some validation before processing the form (the BE should have the proper validation & sanitisation as the FE
                 can be amended by the user) 
             */
+
+            /*
+                    !THE VALIDATION NEEDS A SEPARATE ONE FOR IMAGE LINKS¡
+            */ 
             if(emptyOnly.test(value) || spaceBetweenWords.test(value) && !nonAlphaNumeric.test(value))
             {
                     // as abilities has a single target but with two values it has to have its values extracted differently to other inputs. 
