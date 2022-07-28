@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, FormEventHandler, ReactElement } from "react";
 
-interface actionProps {
+interface actionProps 
+{
     action: string,
     btnType?: "button" | "submit" | "reset" | undefined,
     name?: string,
@@ -22,7 +23,11 @@ function ActionButton ({action, btnType, name, btnForm, onClick} : actionProps) 
     /*onClick is either associated or given a aimless function (e.g. console.log) as it requires an input 
     (this could potentially be dynamically set within a function that is called in the return)*/
     // The button label is determined by the action, the length of the label is limited to 5 characters and as a type of 'string'
-    return <button className={name} form={btnForm ? btnForm : ""} type={btnType ? btnType : "button"} onClick={onClick ? onClick : ()=>{console.log('empty')}}>{action.length <= 5 && typeof action === 'string' ? action : 'nope'}</button>;
+    return (
+        <button className={name} form={btnForm ? btnForm : ""} type={btnType ? btnType : "button"} onClick={onClick ? onClick : ()=>{console.log('empty')}}>
+            {action.length <= 5 && typeof action === 'string' ? action : 'nope'}
+        </button>
+    )
 }
 
 export default ActionButton;

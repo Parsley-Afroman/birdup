@@ -1,4 +1,11 @@
 
+/* 
+    This variable is an object containing the ApiService requests.
+
+    If the document contained rooting then this would be reconsidered as each method within the object correlates the a 
+    request from the controller, however, without routing, it isn't necessary to have this.
+*/ 
+
 const BirdService = {
    
     GetAllBirds: async (ApiService : any) : Promise<any> => 
@@ -11,12 +18,6 @@ const BirdService = {
     {
         const singleBirdRequest : Promise<JSON> = ApiService.GetApiService(`/bird/${birdID}`);
         return singleBirdRequest;
-    },
-
-    // AddSingleBird: ()=>
-    // {   
-    //     const createSingleBirdRequest = [1];
-    //     return createSingleBirdRequest;
-    // },
+    }
 }
 export default BirdService;
