@@ -16,7 +16,7 @@ const BirdService = {
 
     GetSingleBird: (ApiService : any, birdID : Number) : Promise<any> =>
     {
-        const singleBirdRequest : Promise<JSON> = ApiService.GetApiService(`/bird/${birdID}`);
+        const singleBirdRequest : Promise<JSON> = ApiService.GetApiService(`/birds/${birdID}`);
         return singleBirdRequest;
     }
 }
